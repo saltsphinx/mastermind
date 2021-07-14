@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative 'mastermind'
+require_relative 'game'
 
 
 def play_game 
-  game = Mastermind.new
+  game = Game.new
   game.game_menu
 end
 

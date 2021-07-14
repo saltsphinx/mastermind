@@ -17,3 +17,13 @@ First, determine the code colors : Red, Green, Purple, Cyan, Blue, Orange
 Second Setup the mastermind.rb, create a main menu method that gives the user options such as: Play and the two playing options(Codebreaker and Mastermind) and game rules.
 
 For codebreaker, the user wont play against AI. They will simply submit their guesses to the board instance, and the instance will handle everything. For example, having a method to generate 
+
+Find a way to tell the user how well they did. Remember, if there are 2 of a color in a code, the user needs two of that color to recieve feedback. Same if theres 3 or 4 of a color. I guess the best way to give feed back is to,
+1. Create a copy of the color code array and an array for the feedback
+2. Check for correct colors and correct positions FIRST, meaning the black pegs
+3. If there are any possible black pegs, add a 'b' to the feedback array, and remove the color from the color code array
+4. Check for correct colors, meaning the white pegs
+5. If there are any possible white opegs, add a 'w' to the feedback array
+6. There should be at most 4 feedback items, if there are less then add '+''s until the array length is 4
+
+Is deleteing from only the copy array a good idea? Should I be deleteing from the key pegs instead? Or should I delete from both?

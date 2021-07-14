@@ -17,10 +17,9 @@ class Codebreaker
     until board.game_over?
       board.board_actions
       board.guess_code(listen_input)
+      board.feedback
     end
-  end
-
-  def console
-
+    board.board_actions
+    puts 'over'
   end
 end
