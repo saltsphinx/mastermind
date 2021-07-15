@@ -5,7 +5,7 @@ require_relative 'game'
 
 def play_game 
   game = Game.new
-  game.game_menu
+  game.mastermind
 end
 
 play_game

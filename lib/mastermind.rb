@@ -3,7 +3,7 @@
 require_relative 'board'
 require_relative 'console'
 
-class Codebreaker
+class Mastermind
   attr_accessor :board
 
   include Console
@@ -13,7 +13,8 @@ class Codebreaker
   end
 
   def play
-    board.generate_color_code
+    puts 'Enter your code.'
+    board.set_code(%w[r o r b])
     until board.game_over?
       board.board_actions
       board.guess_code(listen_input)

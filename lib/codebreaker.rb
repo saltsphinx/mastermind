@@ -18,6 +18,7 @@ class Codebreaker
       board.board_actions
       board.guess_code(listen_input)
       board.feedback
+      board.feedback_sort
     end
     board.board_actions
     puts 'over'

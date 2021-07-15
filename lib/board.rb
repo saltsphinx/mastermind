@@ -1,4 +1,5 @@
 require_relative 'string'
+require 'pry-byebug'
 
 class Board
   attr_accessor :color_code, :rounds, :code_pegs, :key_pegs, :board
@@ -30,16 +31,27 @@ class Board
   end
 
   def feedback
-    color_code_copy = Array.new(color_code)
+    dup_code = Array.new(color_code)
     self.key_pegs = []
-    color_code.each_index do |i|
-      if code_pegs[i] == color_code[i]
-        self.key_pegs.push('b')
-        color_code_copy.slice!(color_code_copy.index(code_pegs[i]))
+    color_code.each_with_index do |i, n|
+      if dup_code.count(i) <= code_pegs.count(i)
+        if dup_code[n] == code_pegs[n]
+          self.key_pegs.push('b')
+          dup_code[n] = nil
+        else
+          while dup_code.include?(code_pegs[n])
+            self.key_pegs.push('w')
+            binding.pry
+            dup_code[dup_code.index(i)] = nil #Errors when correct colors are in wrong order. For rorb, orbr and other combinations
+          end
+        end
       end
     end
-    color_code_copy.each { |l| self.key_pegs.push('w') if code_pegs.include?(l)}
-    key_pegs.push('+') while key_pegs.length < 4
+    self.key_pegs.push('+') while key_pegs.length < 4
+  end
+
+  def feedback_sort
+    key_pegs.sort_by {|i| %w[b w +].index(i)}
   end
   
   def board_actions

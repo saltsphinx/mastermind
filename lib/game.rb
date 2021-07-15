@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'codebreaker'
+require_relative 'mastermind'
 require_relative = 'board'
 
 class Game
@@ -68,7 +69,7 @@ class Game
     if user_choice.start_with?('c') 
       code_prompt
     elsif user_choice.start_with?('m')
-      game_menu
+      master_prompt
     else
       game_menu
     end
@@ -89,6 +90,23 @@ class Game
   def codebreaker
     @codebreaker = Codebreaker.new
     @codebreaker.play
+  end
+
+  def master_prompt
+    puts "Play as the mastermind?\n'Y'es or 'N'o"
+    user_choice = gets.chomp.downcase
+    if user_choice.start_with?('y') 
+      mastermind
+    elsif user_choice.start_with?('n')
+      play_prompt
+    else
+      play_prompt
+    end
+  end
+
+  def mastermind
+    @mastermind = Mastermind.new
+    @mastermind.play
   end
 
   def game_turn array
