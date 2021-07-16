@@ -96,7 +96,7 @@ class Game
     puts "Play as the mastermind?\n'Y'es or 'N'o"
     user_choice = gets.chomp.downcase
     if user_choice.start_with?('y') 
-      mastermind
+      codebreaker
     elsif user_choice.start_with?('n')
       play_prompt
     else
