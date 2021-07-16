@@ -27,3 +27,11 @@ Find a way to tell the user how well they did. Remember, if there are 2 of a col
 6. There should be at most 4 feedback items, if there are less then add '+''s until the array length is 4
 
 Is deleteing from only the copy array a good idea? Should I be deleteing from the key pegs instead? Or should I delete from both?
+
+7/16/2021
+AI Strat :
+First three rounds, single colors, AKA 'red red red red', 'cyan cyan cyan cyan'
+If there aren't at least two confirmed colors, one more round of single colors
+By this point, lets say the bot has confirmed one red, one orange and ruled out green
+round four or five, use the ruled out colors to confirm positions, rather thats confirming a color isnt in a position or is. I will probably have the colors in the array as objects, so itll store positions that it can or can not be
+If at least 1 position is confirmed for all existing colors, continue, else one more round of color confirming 

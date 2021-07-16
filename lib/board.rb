@@ -34,7 +34,6 @@ class Board
     dup_code = Array.new(color_code)
     self.key_pegs = []
     dup_code.each_with_index do |item, index|
-      puts "item is #{item} index is #{index}"
       if dup_code.count(item) <= code_pegs.count(item)
         if item == code_pegs[index]
           self.key_pegs.push('b')
@@ -42,7 +41,7 @@ class Board
         else
           while dup_code.include?(item)
             self.key_pegs.push('w')
-            dup_code[dup_code.index(item)] = nil #Errors when correct colors are in wrong order. For rorb, orbr and other combinations
+            dup_code[dup_code.index(item)] = nil
           end
         end
       end
