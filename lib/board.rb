@@ -33,16 +33,16 @@ class Board
   def feedback
     dup_code = Array.new(color_code)
     self.key_pegs = []
-    color_code.each_with_index do |i, n|
-      if dup_code.count(i) <= code_pegs.count(i)
-        if dup_code[n] == code_pegs[n]
+    dup_code.each_with_index do |item, index|
+      puts "item is #{item} index is #{index}"
+      if dup_code.count(item) <= code_pegs.count(item)
+        if item == code_pegs[index]
           self.key_pegs.push('b')
-          dup_code[n] = nil
+          dup_code[index] = nil
         else
-          while dup_code.include?(code_pegs[n])
+          while dup_code.include?(item)
             self.key_pegs.push('w')
-            binding.pry
-            dup_code[dup_code.index(i)] = nil #Errors when correct colors are in wrong order. For rorb, orbr and other combinations
+            dup_code[dup_code.index(item)] = nil #Errors when correct colors are in wrong order. For rorb, orbr and other combinations
           end
         end
       end

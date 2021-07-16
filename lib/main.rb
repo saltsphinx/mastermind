@@ -5,7 +5,7 @@ require_relative 'game'
 
 def play_game 
   game = Game.new
-  game.mastermind
+  game.codebreaker
 end
 
 play_game
