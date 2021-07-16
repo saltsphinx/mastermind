@@ -31,7 +31,20 @@ Is deleteing from only the copy array a good idea? Should I be deleteing from th
 7/16/2021
 AI Strat :
 First three rounds, single colors, AKA 'red red red red', 'cyan cyan cyan cyan'
+
 If there aren't at least two confirmed colors, one more round of single colors
+
 By this point, lets say the bot has confirmed one red, one orange and ruled out green
 round four or five, use the ruled out colors to confirm positions, rather thats confirming a color isnt in a position or is. I will probably have the colors in the array as objects, so itll store positions that it can or can not be
 If at least 1 position is confirmed for all existing colors, continue, else one more round of color confirming 
+
+What is the problem?
+Creating an AI that can attempt to guess the user's color code.
+
+What are the inputs? Will the user enter data or will it come from somewhere else?
+The user will enter the code the AI has to solve. The AI will submit arrays of color codes to the board. The board will give feedback to the AI.
+
+What’s the desired output?
+Guesses about the users color code that has been run through several methods, attempting to narrow down the possible colors and positions
+
+Given your inputs, what are the steps necessary to return the desired output?

@@ -68,7 +68,7 @@ module Console
   end
 
   def invalid_input
-    puts 'Enter from the color list.'
+    puts "Enter from the color list.\n'r'ed, 'b'lue, 'g'reen, o'range, 'c'yan and 'p'urple"
     listen_input
   end
 end

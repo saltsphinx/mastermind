@@ -1,11 +1,11 @@
 require_relative 'string'
 
 class Board
-  attr_accessor :color_code, :rounds, :code_pegs, :key_pegs, :board
+  attr_accessor :color_code, :rounds, :code_guess, :key_pegs, :board
 
   def initialize
     @color_code = nil
-    @code_pegs = nil
+    @code_guess = nil
     @key_pegs = %w[+] * 4
     @rounds = 8
     @winner = nil
@@ -25,7 +25,7 @@ class Board
   end
 
   def guess_code guess
-    self.code_pegs = guess
+    self.code_guess = guess
     self.rounds -= 1
   end
 
@@ -33,8 +33,8 @@ class Board
     dup_code = Array.new(color_code)
     self.key_pegs = []
     dup_code.each_with_index do |item, index|
-      if dup_code.count(item) <= code_pegs.count(item)
-        if item == code_pegs[index]
+      if dup_code.count(item) <= code_guess.count(item)
+        if dup_code[index] == code_guess[index]
           self.key_pegs.push('b')
           dup_code[index] = nil
         else
@@ -51,9 +51,13 @@ class Board
   def feedback_sort
     key_pegs.sort_by {|i| %w[b w +].index(i)}
   end
+
+  def ai_feedback
+
+  end
   
   def board_actions
-    sum_board if code_pegs
+    sum_board if code_guess
     show
   end
 
@@ -74,7 +78,7 @@ class Board
 
   def middle_board
     <<-MIDDLE
-      |#{key_pegs[0]}#{key_pegs[1]}| #{code_pegs[0].send(code_pegs[0])}  #{code_pegs[1].send(code_pegs[1])}  #{code_pegs[2].send(code_pegs[2])}  #{code_pegs[3].send(code_pegs[3])} |#{key_pegs[2]}#{key_pegs[3]}|
+      |#{key_pegs[0]}#{key_pegs[1]}| #{code_guess[0].send(code_guess[0])}  #{code_guess[1].send(code_guess[1])}  #{code_guess[2].send(code_guess[2])}  #{code_guess[3].send(code_guess[3])} |#{key_pegs[2]}#{key_pegs[3]}|
     MIDDLE
   end
 
@@ -96,7 +100,7 @@ class Board
 
 
   def game_over?
-    if code_pegs == color_code
+    if code_guess == color_code
       true
       @winner = 'Codebreaker'
     elsif rounds.zero?

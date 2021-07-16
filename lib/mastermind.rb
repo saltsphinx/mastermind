@@ -14,7 +14,7 @@ class Mastermind
 
   def play
     puts 'Enter your code.'
-    board.set_code(%w[r r r g])
+    board.set_code(%w[p r o r])
     until board.game_over?
       board.board_actions
       board.guess_code(listen_input)
