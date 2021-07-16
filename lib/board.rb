@@ -1,5 +1,4 @@
 require_relative 'string'
-require 'pry-byebug'
 
 class Board
   attr_accessor :color_code, :rounds, :code_pegs, :key_pegs, :board
